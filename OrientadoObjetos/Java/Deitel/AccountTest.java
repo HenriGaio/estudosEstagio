@@ -1,23 +1,30 @@
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class AccountTest
 {
 	public static void main(String[] args) 
 	{
-		Scanner input = new Scanner(System.in);
+		JOptionPane.showMessageDialog(null, "Criação de conta");
+		String nome = JOptionPane.showInputDialog("Digite o seu nome");
+		double valor = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor inicial"));
 		
-		Account myAccount = new Account();
+		Account minhaConta1 = new Account(nome,valor);
 		
-		System.out.printf("Initial name is: %s%n%n", myAccount.getName());
-		
-		System.out.println("Please, type the new name: ");
-		String newName = input.nextLine();
-		
-		myAccount.setName(newName);
-		
-		System.out.printf("Current name is: %s%n%n", myAccount.getName());
+		double SaldoAtual = minhaConta1.getBalance();
+		String mensagem0 = String.format("Seu saldo atual é de %.2f  :p", SaldoAtual);
+		JOptionPane.showMessageDialog(null, mensagem0);
 		
 		
-				
+		minhaConta1.deposit(1200.0);
+		SaldoAtual = minhaConta1.getBalance();
+		String mensagem1 = String.format("Seu saldo atual é de %.2f  :p", SaldoAtual);
+		JOptionPane.showMessageDialog(null, mensagem1);
+		
+		
+		minhaConta1.withdraw(320.0);
+		SaldoAtual = minhaConta1.getBalance();
+		
+		String mensagem2 = String.format("Seu saldo atual é de %.2f  :p", SaldoAtual);
+		JOptionPane.showMessageDialog(null, mensagem2);
 	}
 }

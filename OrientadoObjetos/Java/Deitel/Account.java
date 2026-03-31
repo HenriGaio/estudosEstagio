@@ -1,13 +1,15 @@
+import javax.swing.JOptionPane;
+
 public class Account
 {
 	private String name;
 	private double balance;
 	
-	public Account(String givenName, double money) 
+	public Account(String name, double balance) 
 	{
-		name = givenName;
-		if (money > 0.0)
-			balance = money;
+		this.name = name;
+		if (balance > 0.0)
+			this.balance = balance;
 	}
 	
 	public void setName(String newName)
@@ -29,5 +31,17 @@ public class Account
 	public double getBalance() 
 	{
 		return balance;
+	}
+	//exercício 3.11
+	public void withdraw(double withdrawAmount) 
+	{
+		if (balance - withdrawAmount > 0.0) 
+		{
+			balance -= withdrawAmount;
+		}
+		else 
+		{
+			JOptionPane.showMessageDialog(null, "O saque excede o valor contido na conta");
+		}
 	}
 }
